@@ -19,15 +19,15 @@ The game, Battleship, written in Java.
 
 ## Building Project & Unit Tests
 
-**Running application**
+**Running application**\
 With the Eclipse IDE opened and the Battleship project imported, right-click on Battleship.java,
 select Run As, then select Java Application. The program will launch in the IDE's Console window.
 
-**Running unit tests (LocationTest.java example)**
+**Running unit tests (LocationTest.java example)**\
 With the Eclipse IDE opened and the Battleship project imported, right-click on LocationTest.java,
 select Run As, then select JUnit Test. Test results will be displayed in the IDE's JUnit window.
 
-**Code coverage analysis**
+**Code coverage analysis**\
 With the Eclipse IDE opened and the Battleship project imported, right-click on the top-level
 Battleship project directory, select Coverage As, then select JUnit Test. Coverage results
 will be displayed in the IDE's Coverage window.
