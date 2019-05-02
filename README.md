@@ -15,7 +15,7 @@ The game, Battleship, written in Java.
   `git clone https://github.com/mosers1/Java-Battleship.git`
 3. Open the Eclipse IDE
 4. Import the project
-    * File -> Open Projects from File System... -> Select directory --> Click OK
+    * File --> Open Projects from File System... --> Select directory --> Click OK
 
 ## Running Project & Unit Tests
 
