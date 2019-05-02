@@ -33,24 +33,35 @@ class LocationTest
     @Test
     void testLocation()
     {
-        fail("Not yet implemented");
+    	Location testLoc = new Location();
+    	assertEquals(testLoc.getStatus(), 0);
+    	assertEquals(testLoc.hasShip(), false);
+    	assertEquals(testLoc.getLengthOfShip(), -1);
+    	assertEquals(testLoc.getDirectionOfShip(), -1);
     }
 
     @Test
     void testCheckHit()
     {
-        fail("Not yet implemented");
+    	Location testLoc = new Location();
+    	assertEquals(testLoc.checkHit(), false);
+    	testLoc.markHit();
+    	assertEquals(testLoc.checkHit(), true);
     }
 
     @Test
     void testCheckMiss()
     {
-        fail("Not yet implemented");
+    	Location testLoc = new Location();
+    	assertEquals(testLoc.checkMiss(), false);
+    	testLoc.markMiss();
+    	assertEquals(testLoc.checkMiss(), true);
     }
 
     @Test
     void testIsUnguessed()
     {
+<<<<<<< HEAD
         Location location = new Location();
         
         // Loop through partitions and verify the get() matches the set()
@@ -65,6 +76,14 @@ class LocationTest
             location.setStatus(partitions[i]);
             assertEquals(expected[i], location.isUnguessed());
         }
+=======
+    	Location testLoc = new Location();
+    	assertEquals(testLoc.isUnguessed(), true);
+    	testLoc.markMiss();
+    	assertEquals(testLoc.isUnguessed(), false);
+    	testLoc.markHit();
+    	assertEquals(testLoc.isUnguessed(), false);
+>>>>>>> 497c26f8322ff54446681a1c1683e05eba94d624
     }
 
     @Test
