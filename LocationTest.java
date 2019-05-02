@@ -1,35 +1,36 @@
-import static org.junit.jupiter.api.Assertions.*;
+//==============================================================================
+// File: LocationTest.java
+// Description: White box unit tests for the Location software unit.
+// Revision: 1.0.0
+//
+//   DEPENDENCIES, LIMITATIONS, & DESIGN NOTES:
+//       Dependencies : Run with JUnit5.
+//       Limitations  : No known limitations.
+//       Design Notes :
+//           1. 100% code coverage was achieved for this software unit.
+//           2. Many of the functions are getters and setters with boolean 
+//              values which leads to simple test cases.
+//           3. Equivalence class partitioning was performed for functions
+//              that take non-boolean input parameters.
+//           4. Function header comments were omitted for readability and due 
+//              to the simplicity of the test cases and their self-documenting
+//              names.
+//==============================================================================
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
+//==============================================================================
+// Imports
+//==============================================================================
+import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
+//==============================================================================
+// Class declarations
+//==============================================================================
 class LocationTest
 {
+    // Local constants for this test class 
     static final int UNSET = 0;
     
-    @BeforeAll
-    static void setUpBeforeClass() throws Exception
-    {
-    }
-
-    @AfterAll
-    static void tearDownAfterClass() throws Exception
-    {
-    }
-
-    @BeforeEach
-    void setUp() throws Exception
-    {
-    }
-
-    @AfterEach
-    void tearDown() throws Exception
-    {
-    }
-
     @Test
     void testLocation()
     {
@@ -63,13 +64,18 @@ class LocationTest
     {
         Location location = new Location();
         
-        // Loop through partitions and verify the get() matches the set()
-        int [] partitions = {-1, Location.UNGUESSED, Location.HIT, Location.MISSED, 2};
+        // -1 - Invalid boundary limit
+        //  0 - Valid boundary limit
+        //  1 - Valid boundary limit
+        //  2 - Valid boundary limit
+        //  3 - Invalid boundary limit
+        int [] partitions = {-1, Location.UNGUESSED, Location.HIT, Location.MISSED, 3};
         boolean [] expected = {false, true, false, false, false};
         
         // Internal check for test case validity
         assertEquals(partitions.length, expected.length);
-        
+
+        // Loop through partitions and verify the get() matches the set()
         for (int i = 0; i < partitions.length; i++)
         {
             location.setStatus(partitions[i]);
@@ -81,39 +87,28 @@ class LocationTest
     void testMarkHit()
     {
         Location testLoc = new Location();
-        assertEquals(0,testLoc.getStatus());
+        assertEquals(Location.UNGUESSED,testLoc.getStatus());
         testLoc.markHit();
-        assertEquals(1, testLoc.getStatus());
+        assertEquals(Location.HIT, testLoc.getStatus());
         testLoc.markMiss();
         testLoc.markHit();
-        assertEquals(1,testLoc.getStatus());
+        assertEquals(Location.HIT,testLoc.getStatus());
     }
 
     @Test
     void testMarkMiss()
     {
         Location testLoc = new Location();
-        assertEquals(0,testLoc.getStatus());
+        assertEquals(Location.UNGUESSED,testLoc.getStatus());
         testLoc.markMiss();
-        assertEquals(2, testLoc.getStatus());
+        assertEquals(Location.MISSED, testLoc.getStatus());
         testLoc.markHit();
         testLoc.markMiss();
-        assertEquals(2, testLoc.getStatus());
+        assertEquals(Location.MISSED, testLoc.getStatus());
     }
 
     @Test
-    void testHasShip()
-    {
-        Location testLoc = new Location();
-        assertEquals(false, testLoc.hasShip());
-        testLoc.setShip(true);
-        assertEquals(true, testLoc.hasShip());
-        testLoc.setShip(false);
-        assertEquals(false, testLoc.hasShip());
-    }
-
-    @Test
-    void testSetShip()
+    void testSetHasShip()
     {
         Location testLoc = new Location();
         assertEquals(false, testLoc.hasShip());
@@ -128,8 +123,14 @@ class LocationTest
     {
         Location location = new Location();
         
+        // -1 - Invalid boundary limit
+        //  0 - Valid boundary limit
+        //  1 - Valid boundary limit
+        //  2 - Valid boundary limit
+        //  3 - Invalid boundary limit
+        int [] partitions = {-1, Location.UNGUESSED, Location.HIT, Location.MISSED, 3};
+        
         // Loop through partitions and verify the get() matches the set()
-        int [] partitions = {-1, Location.UNGUESSED, Location.HIT, Location.MISSED, 2};
         for (int i = 0; i < partitions.length; i++)
         {
             location.setStatus(partitions[i]);
@@ -141,14 +142,18 @@ class LocationTest
     void testGetSetLengthOfShip()
     {
         Location location = new Location();
-        int result = 0;
-        
-        // Verify initial value is <= 0 (unset)
-        result = location.getLengthOfShip();
-        assertTrue((result <= UNSET) ? true : false);
+
+        // -1 - Invalid boundary limit, Interesting value
+        //  0 - Invalid boundary limit, Interesting value
+        //  1 - Invalid boundary limit
+        //  2 - Valid boundary limit
+        //  3 - Middle value 1
+        //  4 - Middle value 2 (might as well test)
+        //  5 - Valid boundary limit
+        //  6 - Invalid boundary limit
+        int [] partitions = {-1, 0, 1, 2, 3, 4, 5, 6};
 
         // Loop through partitions and verify the get() matches the set()
-        int [] partitions = {-1, 0, 1, 2, 3, 4, 5, 6};
         for (int i = 0; i < partitions.length; i++)
         {
             location.setLengthOfShip(partitions[i]);
@@ -157,14 +162,21 @@ class LocationTest
     }
 
     @Test
-    void testGetDirectionOfShip()
+    void testGetSetDirectionOfShip()
     {
-        fail("Not yet implemented");
-    }
+        Location location = new Location();
 
-    @Test
-    void testSetDirectionOfShip()
-    {
-        fail("Not yet implemented");
+        // -1 - Invalid boundary limit
+        //  0 - Valid boundary limit
+        //  1 - Valid boundary limit
+        //  2 - Invalid boundary limit
+        int [] partitions = {-1, 0, 1, 2};
+        
+        // Loop through partitions and verify the get() matches the set()
+        for (int i = 0; i < partitions.length; i++)
+        {
+            location.setDirectionOfShip(partitions[i]);
+            assertEquals(partitions[i], location.getDirectionOfShip());
+        }
     }
 }
