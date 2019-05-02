@@ -2,20 +2,41 @@
 
 The game, Battleship, written in Java.
 
-## Installation
+## Requirements / Dependencies
+
+* Eclipse IDE for Java Developers (https://www.eclipse.org/downloads/packages/)
+* JUnit 5 (built into Eclipse IDE)
+* JDK (https://www.oracle.com/technetwork/java/javase/downloads/index.html)
+
+## Importing Project
 
 1. Make sure you've installed all requirements
 2. Clone this repository:
-  `git clone https://github.com/ymarcus93/Java-Battleship`
-3. Change into the directory of the project
-4. Use `javac *.java` to compile the source code
-5. To run the program: `java Battleship`
+  `git clone https://github.com/mosers1/Java-Battleship.git`
+3. Open the Eclipse IDE
+4. Import the project
+    * File -> Open Projects from File System... -> Select directory --> Click OK
+
+## Building Project & Unit Tests
+
+**Running application**
+With the Eclipse IDE opened and the Battleship project imported, right-click on Battleship.java,
+select Run As, then select Java Application. The program will launch in the IDE's Console window.
+
+**Running unit tests (LocationTest.java example)**
+With the Eclipse IDE opened and the Battleship project imported, right-click on LocationTest.java,
+select Run As, then select JUnit Test. Test results will be displayed in the IDE's JUnit window.
+
+**Code coverage analysis**
+With the Eclipse IDE opened and the Battleship project imported, right-click on the top-level
+Battleship project directory, select Coverage As, then select JUnit Test. Coverage results
+will be displayed in the IDE's Coverage window.
 
 ## Usage
 
 Here's a short explanation on how to use **Java-Battleship**:
 
-* Use `java Battleship` to run the code, after following the installation steps.
+* Use `java Battleship` on the command-line to run the code
 * When the application starts, you, the player, sets up your board by typing in the on-screen coordinates.
 * Then, the computer makes its own board and you play against it by guessing its ships' locations.
 	* NOTE: The computer's board is printed on screen, just so the game can go faster.
@@ -29,10 +50,10 @@ Here's a short explanation on how to use **Java-Battleship**:
 4. Push to the branch: `git push origin feature/my-new-feature`
 5. Submit a pull request
 
-## Requirements / Dependencies
+## Original Author
 
-* JDK
-	* javac
+This project was forked from ymarcus93's repository (https://github.com/ymarcus93/Java-Battleship)
+to aid in a class project.
 
 ## Version
 
