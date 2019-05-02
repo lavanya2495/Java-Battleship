@@ -61,7 +61,6 @@ class LocationTest
     @Test
     void testIsUnguessed()
     {
-<<<<<<< HEAD
         Location location = new Location();
         
         // Loop through partitions and verify the get() matches the set()
@@ -76,14 +75,6 @@ class LocationTest
             location.setStatus(partitions[i]);
             assertEquals(expected[i], location.isUnguessed());
         }
-=======
-    	Location testLoc = new Location();
-    	assertEquals(testLoc.isUnguessed(), true);
-    	testLoc.markMiss();
-    	assertEquals(testLoc.isUnguessed(), false);
-    	testLoc.markHit();
-    	assertEquals(testLoc.isUnguessed(), false);
->>>>>>> 497c26f8322ff54446681a1c1683e05eba94d624
     }
 
     @Test
