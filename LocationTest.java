@@ -74,7 +74,10 @@ class LocationTest
     @Test
     void testSetShip()
     {
-        fail("Not yet implemented");
+        Location testLoc = new Location();
+        assertEquals(false, testLoc.hasShip());
+        testLoc.setShip(true);
+        assertEquals(true, testLoc.hasShip());
     }
 
     @Test
