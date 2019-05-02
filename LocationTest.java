@@ -62,18 +62,39 @@ class LocationTest
         testLoc.markHit();
         assertEquals(1, testLoc.getStatus());
         assertNotEquals(0, testLoc.getStatus());
+        testLoc.markMiss();
+        testLoc.markHit();
+        assertEquals(1,testLoc.getStatus());
+        assertNotEquals(2,testLoc.getStatus());
     }
 
     @Test
     void testMarkMiss()
     {
         Location testLoc = new Location();
+        assertEquals(0,testLoc.getStatus());
+        assertNotEquals(1,testLoc.getStatus());
+        testLoc.markMiss();
+        assertEquals(2, testLoc.getStatus());
+        assertNotEquals(1, testLoc.getStatus());
+        testLoc.markHit();
+        testLoc.markMiss();
+        assertEquals(2, testLoc.getStatus());
+        assertNotEquals(1, testLoc.getStatus());
     }
 
     @Test
     void testHasShip()
     {
         Location testLoc = new Location();
+        assertEquals(false, testLoc.hasShip());
+        assertNotEquals(true, testLoc.hasShip());
+        testLoc.setShip(true);
+        assertEquals(true, testLoc.hasShip());
+        assertNotEquals(false, testLoc.hasShip());
+        testLoc.setShip(false);
+        assertEquals(false, testLoc.hasShip());
+        assertNotEquals(true, testLoc.hasShip());
     }
 
     @Test
