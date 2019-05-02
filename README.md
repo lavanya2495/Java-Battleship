@@ -17,7 +17,7 @@ The game, Battleship, written in Java.
 4. Import the project
     * File -> Open Projects from File System... -> Select directory --> Click OK
 
-## Building Project & Unit Tests
+## Running Project & Unit Tests
 
 **Running application**\
 With the Eclipse IDE opened and the Battleship project imported, right-click on Battleship.java,
@@ -26,6 +26,8 @@ select Run As, then select Java Application. The program will launch in the IDE'
 **Running unit tests (LocationTest.java example)**\
 With the Eclipse IDE opened and the Battleship project imported, right-click on LocationTest.java,
 select Run As, then select JUnit Test. Test results will be displayed in the IDE's JUnit window.
+
+For this example, LocationTest.java tests the paired accessor and mutator functions in Location.java. Half of the mutators take no parameters or only a Boolean value resulting in simple test cases. The other half take integer parameters. Equivalence class partitioning was performed for these functions and their corresponding accessor functions.
 
 **Code coverage analysis**\
 With the Eclipse IDE opened and the Battleship project imported, right-click on the top-level
