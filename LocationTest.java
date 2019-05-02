@@ -56,19 +56,25 @@ class LocationTest
     @Test
     void testMarkHit()
     {
-        fail("Not yet implemented");
+        Location testLoc = new Location();
+        assertEquals(0,testLoc.getStatus());
+        assertNotEquals(1,testLoc.getStatus());
+        testLoc.markHit();
+        assertEquals(1, testLoc.getStatus());
+        assertNotEquals(0, testLoc.getStatus());
+        
     }
 
     @Test
     void testMarkMiss()
     {
-        fail("Not yet implemented");
+        Location testLoc = new Location();
     }
 
     @Test
     void testHasShip()
     {
-        fail("Not yet implemented");
+        Location testLoc = new Location();
     }
 
     @Test
