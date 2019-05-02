@@ -62,7 +62,6 @@ class LocationTest
         testLoc.markHit();
         assertEquals(1, testLoc.getStatus());
         assertNotEquals(0, testLoc.getStatus());
-        
     }
 
     @Test
