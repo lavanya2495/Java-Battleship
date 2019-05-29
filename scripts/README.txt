@@ -5,4 +5,3 @@ TODO List:
 2. Resolve CS1 failure for JUnit5 illegal argument exceptions
 3. Parse and report test run results (determine best way to do so)
 4. Complete stressTestApp.sh
-5. Update scripts to run directly from this directory instead of the project root

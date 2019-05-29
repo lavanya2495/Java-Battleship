@@ -22,6 +22,7 @@ set -o nounset
 #===============================================================================
 OUT_DIR="out"
 JUNIT_JAR="junit-platform-console-standalone-1.5.0-M1.jar"
+PROJECT_ROOT=".."
 
 # NOTE: This list needs to be updated if any additional source files are added
 #       to the project!
@@ -46,15 +47,15 @@ testList=(
 echo "Building test suite..."
 
 echo "Creating directory for build artifacts..."
-mkdir -p $OUT_DIR
+mkdir -p $PROJECT_ROOT/$OUT_DIR
 
 echo "Removing stale artifacts..."
-rm -f $OUT_DIR/*.class
+rm -f -v $PROJECT_ROOT/$OUT_DIR/*.class
 
 echo "Building source code..."
 for i in ${sourceList[@]}; do
     echo "Building: $i.java --> $i.class"
-    javac -d $OUT_DIR $i.java
+    javac -d $PROJECT_ROOT/$OUT_DIR -cp $PROJECT_ROOT $PROJECT_ROOT/$i.java
     if [ $? != 0 ]; then
         echo "ERROR: Unable to build $i.java! Aborting build..."
         exit 1
@@ -64,7 +65,7 @@ done
 echo "Building unit tests..."
 for i in ${testList[@]}; do
     echo "Building: $i.java --> $i.class"
-    javac -d $OUT_DIR -cp $OUT_DIR:$JUNIT_JAR $i.java
+    javac -d $PROJECT_ROOT/$OUT_DIR -cp $PROJECT_ROOT/$OUT_DIR:$PROJECT_ROOT/$JUNIT_JAR $PROJECT_ROOT/$i.java
     if [ $? != 0 ]; then
         echo "ERROR: Unable to build $i.java! Aborting build..."
         exit 2

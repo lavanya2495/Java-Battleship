@@ -1,5 +1,7 @@
 #!/bin/bash
 #===============================================================================
+#!/bin/bash
+#===============================================================================
 # Team D'Buggers (Team 7)
 # Professor McKee
 # CPSC 5200-01
@@ -28,6 +30,7 @@ MAX_ARGS=2
 
 OUT_DIR="out"
 JUNIT_JAR="junit-platform-console-standalone-1.5.0-M1.jar"
+PROJECT_ROOT=".."
 
 # Hack required due to memory limitations on CS1
 CS1_HACK="-XX:MaxHeapSize=512m -XX:InitialHeapSize=512m -XX:CompressedClassSpaceSize=64m -XX:MaxMetaspaceSize=128m -XX:+UseConcMarkSweepGC"
@@ -62,10 +65,11 @@ numTests=$1
 numPass=0
 numFail=0
 echo "Running the test suite..." | tee -a $LOG_FILE
+echo "Start date/time:" $(date) | tee -a $LOG_FILE
 start=$SECONDS
 for i in `seq 1 $numTests`; do
     echo "Executing test run $i of $1..." | tee -a $LOG_FILE
-    java $CS1_HACK -jar $JUNIT_JAR --class-path $OUT_DIR --scan-class-path | tee -a $LOG_FILE
+    java $CS1_HACK -jar $PROJECT_ROOT/$JUNIT_JAR --class-path $PROJECT_ROOT/$OUT_DIR --scan-class-path | tee -a $LOG_FILE
     rv=$?
     echo "Tests completed with return code: $rv" | tee -a $LOG_FILE
     if [ $rv == 0 ]; then
@@ -75,6 +79,7 @@ for i in `seq 1 $numTests`; do
     fi
 done
 stop=$(( $SECONDS - $start ))
+echo "Stop date/time:" $(date) | tee -a $LOG_FILE
 
 # Report statistics
 echo "Test duration:       $stop [seconds]" | tee -a $LOG_FILE
@@ -108,5 +113,5 @@ else
     exit 4
 fi
 
-# Propogate status
+# Propagate status
 exit $isFail
