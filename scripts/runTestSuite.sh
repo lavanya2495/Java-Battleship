@@ -9,10 +9,6 @@
 # File: runTestSuite.sh
 #
 # Description: <TBD>
-# TODO:
-# 1. INTEGER COMPARISON
-# 2. Failure return code from java
-# 3. Counting/reporting/parsing PASS/FAILs...
 #===============================================================================
 
 #set -o errexit
@@ -58,17 +54,37 @@ fi
 # Clean-up any stale log files
 rm -f $LOG_FILE
 
+# Capture system-level information for future debug-ability
+echo -e "
+================================================================================
+Environment Variables
+================================================================================
+$(env)" >> $LOG_FILE
+
+echo -e "
+================================================================================
+Java Version
+================================================================================
+" | tee -a $LOG_FILE
+echo $(java $CS1_HACK -version 2>&1) | tee -a $LOG_FILE
+echo JUnit jar file: $JUNIT_JAR | tee -a $LOG_FILE
+
+echo -e "
+================================================================================
+Test Suite Execution
+================================================================================
+" | tee -a $LOG_FILE
+
 # Run the test suite
 numIter=$1
 numPass=0
 numFail=0
-echo "Running the test suite..." | tee -a $LOG_FILE
-echo "Start date/time:" $(date) | tee -a $LOG_FILE
+echo "Start date/time:" $(date)  | tee -a $LOG_FILE
 start=$SECONDS
 for i in `seq 1 $numIter`; do
-    echo "****************************************" | tee -a $LOG_FILE
+    echo "**************************************************" | tee -a $LOG_FILE
     echo "Executing test run $i of $1..." | tee -a $LOG_FILE
-    echo "****************************************" | tee -a $LOG_FILE
+    echo "**************************************************" | tee -a $LOG_FILE
     java $CS1_HACK -jar $PROJECT_ROOT/$JUNIT_JAR --class-path $PROJECT_ROOT/$OUT_DIR --scan-class-path | tee -a $LOG_FILE
     rv=$?
     echo "Tests completed with return code: $rv" | tee -a $LOG_FILE
@@ -98,7 +114,7 @@ testCasePassRate=$(bc -l <<< "scale=2; $numCasePass/$numCases*100")
 testSuitePassRate=$(bc -l <<< "scale=2; $numPass/$numIter*100")
   
 # Report statistics
-echo ""
+echo "" | tee -a $LOG_FILE
 echo "================================================================================" | tee -a $LOG_FILE
 echo "Statistics" | tee -a $LOG_FILE
 echo "================================================================================" | tee -a $LOG_FILE
@@ -114,7 +130,7 @@ echo "# of PASSing test cases:  $numCasePass"            | tee -a $LOG_FILE
 echo "# of FAILing test cases:  $numCaseFail"            | tee -a $LOG_FILE
 echo "Test case passing rate:   $testCasePassRate%"      | tee -a $LOG_FILE
 echo "================================================================================" | tee -a $LOG_FILE
-echo "See the log file for the full console output: $LOG_FILE"
+echo "Please see the log file for the full console output: $LOG_FILE"
 echo ""
 
 # Determine overall result
@@ -128,7 +144,8 @@ fi
 # Notify e-mail recipient if one was provided by caller
 if [ $# == $MAX_ARGS ]; then
     echo "Sending e-mail report to $2..."
-    mail -v -s "TEST RUN -- $status!" $2 < $LOG_FILE
+    messageBody="Please view the attached file for full console output of the test run."
+    echo $messageBody | mail -v -s "[$USER] Test Suite Run -- $status!" -a $LOG_FILE $2
     if [ $? != 0 ]; then
         echo "ERROR: Unable to send e-mail! rv = $?"
         exit 3
