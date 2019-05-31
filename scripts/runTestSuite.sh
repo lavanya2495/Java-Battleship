@@ -23,11 +23,12 @@ MIN_ARGS=1
 MAX_ARGS=2
 
 OUT_DIR="out"
-JUNIT_JAR="junit-platform-console-standalone-1.5.0-M1.jar"
+JUNIT_JAR="junit-platform-console-standalone-1.4.2.jar"
 PROJECT_ROOT=".."
+JDK_PATH="$PROJECT_ROOT/../jdk1.8.0_211/bin"
 
 # Hack required due to memory limitations on CS1
-CS1_HACK="-XX:MaxHeapSize=512m -XX:InitialHeapSize=512m -XX:CompressedClassSpaceSize=64m -XX:MaxMetaspaceSize=128m -XX:+UseConcMarkSweepGC"
+CS1_HACK="-Xmx512m"  # Limit heap to 512 MB
 
 LOG_FILE="testOutput.txt"
 
@@ -66,7 +67,7 @@ echo -e "
 Java Version
 ================================================================================
 " | tee -a $LOG_FILE
-echo $(java $CS1_HACK -version 2>&1) | tee -a $LOG_FILE
+echo $($JDK_PATH/java $CS1_HACK -version 2>&1) | tee -a $LOG_FILE
 echo JUnit jar file: $JUNIT_JAR | tee -a $LOG_FILE
 
 echo -e "
@@ -85,7 +86,7 @@ for i in `seq 1 $numIter`; do
     echo "**************************************************" | tee -a $LOG_FILE
     echo "Executing test run $i of $1..." | tee -a $LOG_FILE
     echo "**************************************************" | tee -a $LOG_FILE
-    java $CS1_HACK -jar $PROJECT_ROOT/$JUNIT_JAR --class-path $PROJECT_ROOT/$OUT_DIR --scan-class-path | tee -a $LOG_FILE
+    $JDK_PATH/java $CS1_HACK -jar $PROJECT_ROOT/$JUNIT_JAR --class-path $PROJECT_ROOT/$OUT_DIR --scan-class-path | tee -a $LOG_FILE
     rv=$?
     echo "Tests completed with return code: $rv" | tee -a $LOG_FILE
     if [ $rv == 0 ]; then
