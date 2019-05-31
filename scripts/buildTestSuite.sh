@@ -21,9 +21,9 @@ set -o nounset
 # Constants
 #===============================================================================
 OUT_DIR="out"
-JUNIT_JAR="junit-platform-console-standalone-1.5.0-M1.jar"
 PROJECT_ROOT=".."
 JDK_PATH="$PROJECT_ROOT/../jdk1.8.0_211/bin"
+JUNIT_JAR="junit/junit-platform-console-standalone-1.5.0-M1.jar"
 
 # Hack required due to memory limitations on CS1
 CS1_HACK="-J-Xmx512m"  # Limit heap to 512 MB
