@@ -1,6 +1,7 @@
 #!/bin/bash
 #===============================================================================
 # Team D'Buggers (Team 7)
+# Scott Moser, Nicholas Benyo, Melissa Jones
 # Professor McKee
 # CPSC 5200-01
 # 6 June 2019
@@ -8,7 +9,27 @@
 #
 # File: stressTestApp.sh
 #
-# Description: <TBD>
+# Description:
+# This shell script kicks of a specified number of background instances of the
+# test suite each executing a specified number of times. Results are displayed
+# to the user.
+#
+#   DEPENDENCIES, LIMITATIONS, & DESIGN NOTES:
+#       Dependencies : 
+#       Design Notes :
+#           1. Each test suite instance is kicked off as a background task.
+#           2. The PID of each instance is saved, then a join is performed.
+#           3. Once all instances are complete, their logs are combined.
+#           4. The combined log is then parsed to determine overall PASS/FAIL.
+#           5. Results and statistics are calculated and displayed to the user.
+#           6. Console output is logged to $LOG_FILE
+#       Limitations :
+#           1. Due to memory limitations on SU's CS1 server, errors may be seen
+#              if too many background instances are requested (e.g. >= 5).
+#
+#   Example Usage:
+#   "./stressTestApp.sh 2 5"  # Launches two instances of the test suite in the
+#                               background, each executing 5 loops.
 #===============================================================================
 
 #set -o errexit

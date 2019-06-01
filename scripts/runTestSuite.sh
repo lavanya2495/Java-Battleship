@@ -12,13 +12,19 @@
 # Description:
 # This shell script executes all J-Unit test cases in the $OUT_DIR directory
 # a specificed number of times and e-mails the results to an e-mail address, if
-# specified.
+# provided.
 #
 #   DEPENDENCIES, LIMITATIONS, & DESIGN NOTES:
 #       Dependencies : 
 #           1. JDK 1.8.0_211 must be installed at $JDK_PATH.
 #       Design Notes :
-#           1. 
+#           1. All J-Unit test cases in the $OUT_DIR directory are run.
+#           2. Console output is logged to $LOG_FILE.
+#           3. Caller can specify the number of test iterations.
+#           4. Caller can optionally specify an e-mail address.
+#           5. If an e-mail is provided, the test results are set and the
+#              console output is attached to the e-mail.
+#           6. Test results and statistics are calculated and displayed.
 #       Limitations :
 #           1. Due to memory limitations on SU's CS1 server, the $CS1_HACK
 #              variable is used to limit the memory used by the JVM.
