@@ -1,6 +1,7 @@
 #!/bin/bash
 #===============================================================================
 # Team D'Buggers (Team 7)
+# Scott Moser, Nicholas Benyo, Melissa Jones
 # Professor McKee
 # CPSC 5200-01
 # 6 June 2019
@@ -8,7 +9,24 @@
 #
 # File: runTestSuite.sh
 #
-# Description: <TBD>
+# Description:
+# This shell script executes all J-Unit test cases in the $OUT_DIR directory
+# a specificed number of times and e-mails the results to an e-mail address, if
+# specified.
+#
+#   DEPENDENCIES, LIMITATIONS, & DESIGN NOTES:
+#       Dependencies : 
+#           1. JDK 1.8.0_211 must be installed at $JDK_PATH.
+#       Design Notes :
+#           1. 
+#       Limitations :
+#           1. Due to memory limitations on SU's CS1 server, the $CS1_HACK
+#              variable is used to limit the memory used by the JVM.
+#
+#   Example Usage:
+#   "./runTestSuite.sh 1"                 # Executes the test suite one time
+#   "./runTestSuite.sh 2 test@gmail.com"  # Executes the test suite twice and
+#                                           e-mails results to test@gmail.com.
 #===============================================================================
 
 #set -o errexit

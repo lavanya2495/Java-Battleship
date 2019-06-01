@@ -1,6 +1,7 @@
 #!/bin/bash
 #===============================================================================
 # Team D'Buggers (Team 7)
+# Scott Moser, Nicholas Benyo, Melissa Jones
 # Professor McKee
 # CPSC 5200-01
 # 6 June 2019
@@ -8,8 +9,22 @@
 #
 # File: buildTestSuite.sh
 #
-# Description: <TBD>
+# Description:
+# This shell script builds the Battleship project and associated J-Unit unit
+# tests.
 #
+#   DEPENDENCIES, LIMITATIONS, & DESIGN NOTES:
+#       Dependencies : 
+#           1. JDK 1.8.0_211 must be installed at $JDK_PATH.
+#       Design Notes :
+#           1. All source files are built, then all J-Unit test files are built.
+#           2. Artifacts are placed in the $OUT_DIR directory.
+#       Limitations :
+#           1. Due to memory limitations on SU's CS1 server, the $CS1_HACK
+#              variable is used to limit the memory used by the JVM.
+#
+#   Example Usage:
+#   "./buildTestSuite.sh"
 #===============================================================================
 
 #set -o errexit
