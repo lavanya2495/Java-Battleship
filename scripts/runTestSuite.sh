@@ -176,7 +176,7 @@ echo ""
 if [ $# == $MAX_ARGS ]; then
     echo "Sending e-mail report to $2..."
     messageBody="Please view the attached file for full console output of the test run."
-    echo $messageBody | mail -v -s "[$USER] Test Suite Run -- $status!" -a $LOG_FILE $2
+    echo $messageBody | mail -s "[$USER] Test Suite Run -- $status!" -a $LOG_FILE $2
     if [ $? != 0 ]; then
         echo "ERROR: Unable to send e-mail! rv = $?"
         exit 4
