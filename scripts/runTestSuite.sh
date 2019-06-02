@@ -30,9 +30,13 @@
 #              variable is used to limit the memory used by the JVM.
 #
 #   Example Usage:
-#   "./runTestSuite.sh 1"                 # Executes the test suite one time
-#   "./runTestSuite.sh 2 test@gmail.com"  # Executes the test suite twice and
-#                                           e-mails results to test@gmail.com.
+#   1. Executes the test suite one time
+#         ./runTestSuite.sh 1
+#   2. Executes the test suite twice and e-mails results to test@gmail.com.
+#         ./runTestSuite.sh 2 test@gmail.com
+#   3. Executes the test suite twice and e-mails the results to multiple 
+#      recipients.
+#         ./runTestSuite.sh 2 "test1@gmail.com test2@gmail.com test3@gmail.com"
 #===============================================================================
 
 #set -o errexit
