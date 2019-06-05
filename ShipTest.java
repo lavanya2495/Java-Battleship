@@ -70,29 +70,34 @@ class ShipTest {
 		assertEquals(testShip.getDirection(), 0);
 	}
 
-	@Test
-	void testGetRow() {
-		fail("Not yet implemented");
-	}
+	// TODO: Implement test case
+	//@Test
+	//void testGetRow() {
+	//	fail("Not yet implemented");
+	//}
 
-	@Test
-	void testGetCol() {
-		fail("Not yet implemented");
-	}
+	// TODO: Implement test case
+	//@Test
+	//void testGetCol() {
+	//	fail("Not yet implemented");
+	//}
 
-	@Test
-	void testGetLength() {
-		fail("Not yet implemented");
-	}
+	// TODO: Implement test case
+	//@Test
+	//void testGetLength() {
+	//	fail("Not yet implemented");
+	//}
 
-	@Test
-	void testGetDirection() {
-		fail("Not yet implemented");
-	}
+	// TODO: Implement test case
+	//@Test
+	//void testGetDirection() {
+	//	fail("Not yet implemented");
+	//}
 
-	@Test
-	void testToString() {
-		fail("Not yet implemented");
-	}
+	// TODO: Implement test case
+	//@Test
+	//void testToString() {
+	//	fail("Not yet implemented");
+	//}
 
 }
