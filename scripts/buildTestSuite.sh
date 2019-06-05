@@ -58,6 +58,7 @@ sourceList=(
 testList=(
     LocationTest
     ShipTest
+    GridTest
 )
 
 #===============================================================================
