@@ -136,7 +136,7 @@ else
     rval=4
 fi
 
-# Perform calculations
+# Perform calculations 
 duration=$(( $stop - $start ))
 passRate=$(bc -l <<< "scale=2; $actualNumPass/$numInstances*100")
 
