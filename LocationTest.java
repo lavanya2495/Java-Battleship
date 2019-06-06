@@ -31,6 +31,9 @@ class LocationTest
     // Local constants for this test class 
     static final int UNSET = 0;
     
+    /*
+     * This test ensures that the constructor of the Location class is accurately initialized
+     */
     @Test
     void testLocation()
     {
@@ -41,6 +44,9 @@ class LocationTest
     	assertEquals(testLoc.getDirectionOfShip(), -1);
     }
 
+    /*
+     * This test checks that when a location is marked hit that it is accurately recorded.
+     */
     @Test
     void testCheckHit()
     {
@@ -50,6 +56,10 @@ class LocationTest
     	assertEquals(testLoc.checkHit(), true);
     }
 
+    /*
+     * This test checks that when a location is marked missed that it is accurately recorded with the 
+     * CheckMiss method.
+     */
     @Test
     void testCheckMiss()
     {
@@ -59,6 +69,9 @@ class LocationTest
     	assertEquals(testLoc.checkMiss(), true);
     }
 
+    /*
+     * This test ensures that a location is not marked as guessed until it is either hit or missed
+     */
     @Test
     void testIsUnguessed()
     {
@@ -83,6 +96,10 @@ class LocationTest
         }
     }
 
+    /*
+     * This ensures that a location is appropriately marked as Hit when the status is changed to Hit and not
+     * when the status is unguessed or missed.
+     */
     @Test
     void testMarkHit()
     {
@@ -95,6 +112,10 @@ class LocationTest
         assertEquals(Location.HIT,testLoc.getStatus());
     }
 
+    /*
+     * This ensures that a location is appropriately marked as Missed when the status is changed to Missed and not
+     * when the status is unguessed or hit.
+     */
     @Test
     void testMarkMiss()
     {
@@ -107,6 +128,10 @@ class LocationTest
         assertEquals(Location.MISSED, testLoc.getStatus());
     }
 
+    /*
+     * This tests that the location is set as having a ship only when the setShip for each location is marked
+     * as true and not when it is marked as false.
+     */
     @Test
     void testSetHasShip()
     {
@@ -118,6 +143,10 @@ class LocationTest
         assertEquals(false, testLoc.hasShip());
     }
 
+    /*
+     * This test ensures that the status is properly retrieved. This test checks all partitions as laid out 
+     * in the method
+     */
     @Test
     void testGetSetStatus()
     {
@@ -138,6 +167,9 @@ class LocationTest
         }
     }
 
+    /*
+     * This test ensures that the getter and setter of the length of the ship is functioning as expected
+     */
     @Test
     void testGetSetLengthOfShip()
     {
@@ -161,6 +193,10 @@ class LocationTest
         }
     }
 
+    /*
+     * This method ensures that the getter and setter of the direction of the ship is functioning 
+     * as expected. a direction can either be unset(-1), vertical(1), or horizontal(0).
+     */
     @Test
     void testGetSetDirectionOfShip()
     {
