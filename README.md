@@ -44,6 +44,12 @@ Here's a short explanation on how to use **Java-Battleship**:
 	* NOTE: The computer's board is printed on screen, just so the game can go faster.
 * The program ends when one side beats the other.
 
+## CI Server Setup
+
+See the following files for more information:
+1. [Jenkins Installation Resources](https://github.com/mosers1/Java-Battleship/blob/master/docs/InstallingJenkins.txt)
+2. [Java JDK Installation Instructions (necessary to run our scripts)](https://github.com/mosers1/Java-Battleship/blob/master/scripts/README.txt)
+
 ## Contributing
 
 1. Fork it
