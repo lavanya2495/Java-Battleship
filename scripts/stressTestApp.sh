@@ -144,7 +144,7 @@ echo ""                                                                         
 echo "================================================================================" | tee -a $LOG_FILE
 echo "Results & Statistics"                                                             | tee -a $LOG_FILE
 echo "================================================================================" | tee -a $LOG_FILE
-echo "Overall stress test tesult:       $result"                                        | tee -a $LOG_FILE
+echo "Overall stress test result:       $result"                                        | tee -a $LOG_FILE
 echo "Execution time:                   $duration [seconds]"                            | tee -a $LOG_FILE
 echo ""                                                                                 | tee -a $LOG_FILE
 echo "Expected # of passing instances:  $expectedNumPass"                               | tee -a $LOG_FILE
